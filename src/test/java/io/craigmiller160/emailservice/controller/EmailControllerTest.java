@@ -121,7 +121,33 @@ public class EmailControllerTest {
 
     @Test
     public void test_sendEmail_unauthorized() {
-        throw new RuntimeException();
+        final var emailRequest = new EmailRequest(
+                List.of(TO_1, TO_2),
+                List.of(CC_1, CC_2),
+                List.of(BCC_1, BCC_2),
+                SUBJECT,
+                MESSAGE
+        );
+
+        when(emailService.sendEmail(emailRequest))
+                .thenReturn(Try.success(null));
+
+        apiProcessor.call(apiConfig -> {
+            apiConfig.request(requestConfig -> {
+                requestConfig.setPath("/email");
+                requestConfig.setMethod(HttpMethod.POST);
+                requestConfig.setBody(new Json(emailRequest));
+                requestConfig.overrideAuth(authConfig -> {
+                    authConfig.setType(AuthType.NONE);
+                });
+            });
+            apiConfig.response(responseConfig -> {
+                responseConfig.setStatus(401);
+            });
+        });
+
+        verify(emailService, times(0))
+                .sendEmail(emailRequest);
     }
 
 }
