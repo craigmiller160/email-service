@@ -7,6 +7,11 @@ spring:
     port: 30001
     username: user
     password: password
+  mail:
+    properties:
+      mail:
+        smtp:
+          debug: true
 
 oauth2:
   auth-server-host: https://localhost:7003
