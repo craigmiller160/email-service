@@ -8,8 +8,7 @@ spring:
     host: smtp.gmail.com
     port: 465
     username: craigmiller.emailer@gmail.com
-    # TODO get this from env variable
-    password: 1111111
+    password: ${CRAIG_EMAILER_PASSWORD}
     properties:
       mail:
         smtp:
