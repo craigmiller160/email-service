@@ -33,6 +33,7 @@ public class EmailConfig {
         this.mailAuth = mailAuth;
         this.mailSsl = mailSsl;
         this.mailStartTls = mailStartTls;
+        this.debug = debug;
     }
 
     @Bean
