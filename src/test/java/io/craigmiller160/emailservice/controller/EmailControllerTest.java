@@ -27,6 +27,8 @@ import java.security.KeyPair;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @SpringBootTest
@@ -109,6 +111,8 @@ public class EmailControllerTest {
         });
 
         assertEquals(200, result.getResponse().getStatus());
+        verify(emailService, times(1))
+                .sendEmail(emailRequest);
     }
 
     @Test
