@@ -1,5 +1,5 @@
 <project name="db-backup-service" default="copy" basedir="../">
-    <description>db-backup-service supplemental build script</description>
+    <description>email-service supplemental build script</description>
 
     <target name="clean">
         <delete dir="deploy/build" />
@@ -8,7 +8,7 @@
 
     <target name="copy" depends="clean">
         <copy todir="deploy/build">
-            <fileset dir="target" includes="db-backup-service-*.jar" />
+            <fileset dir="target" includes="email-service-*.jar" />
         </copy>
     </target>
 </project>
