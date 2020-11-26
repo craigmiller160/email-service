@@ -26,10 +26,10 @@ public class EmailConfig {
                        @Value("${spring.mail.port}") final int port,
                        @Value("${spring.mail.username}") final String username,
                        @Value("${spring.mail.password}") final String password,
-                       @Pattern(regexp = "true|false") @Value("${spring.mail.properties.mail.smtp.auth}") final String mailAuth,
-                       @Pattern(regexp = "true|false") @Value("${spring.mail.properties.mail.smtp.ssl.enable}") final String mailSsl,
-                       @Pattern(regexp = "true|false") @Value("${spring.mail.properties.mail.smtp.starttls.enable}") final String mailStartTls,
-                       @Pattern(regexp = "true|false") @Value("${spring.mail.properties.mail.smtp.debug}") final String debug) {
+                       @Value("${spring.mail.properties.mail.smtp.auth}") final String mailAuth,
+                       @Value("${spring.mail.properties.mail.smtp.ssl.enable}") final String mailSsl,
+                       @Value("${spring.mail.properties.mail.smtp.starttls.enable}") final String mailStartTls,
+                       @Value("${spring.mail.properties.mail.smtp.debug}") final String debug) {
         this.host = host;
         this.port = port;
         this.username = username;
