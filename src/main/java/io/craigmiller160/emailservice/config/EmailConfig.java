@@ -16,6 +16,7 @@ public class EmailConfig {
     private final String mailAuth;
     private final String mailSsl;
     private final String mailStartTls;
+    private final String debug;
 
     public EmailConfig(@Value("${spring.mail.host}") final String host,
                        @Value("${spring.mail.port}") final int port,
@@ -23,7 +24,8 @@ public class EmailConfig {
                        @Value("${spring.mail.password}") final String password,
                        @Value("${spring.mail.properties.mail.smtp.auth}") final String mailAuth,
                        @Value("${spring.mail.properties.mail.smtp.ssl.enable}") final String mailSsl,
-                       @Value("${spring.mail.properties.mail.smtp.starttls.enable}") final String mailStartTls) {
+                       @Value("${spring.mail.properties.mail.smtp.starttls.enable}") final String mailStartTls,
+                       @Value("${spring.mail.properties.mail.smtp.debug}") final String debug) {
         this.host = host;
         this.port = port;
         this.username = username;
@@ -46,7 +48,7 @@ public class EmailConfig {
         props.put("mail.smtp.auth", mailAuth);
         props.put("mail.smtp.starttls.enable", mailStartTls);
         props.put("mail.smtp.ssl.enable", mailSsl);
-        props.put("mail.debug", "true"); // TODO make this configurable, only run this in dev
+        props.put("mail.debug", debug);
 
         return mailSender;
     }
