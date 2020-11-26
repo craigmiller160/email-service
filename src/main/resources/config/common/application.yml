@@ -4,6 +4,20 @@ spring:
       ddl-auto: none
   datasource:
     url: jdbc:postgresql://${spring.datasource.host}:${spring.datasource.port}/email_service_dev
+  mail:
+    host: smtp.gmail.com
+    port: 465
+    username: craigmiller.emailer@gmail.com
+    # TODO get this from env variable
+    password: 1111111
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+          ssl:
+            enable: true
 
 oauth2:
   client-name: email-service
