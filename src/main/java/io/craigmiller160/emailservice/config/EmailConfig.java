@@ -7,8 +7,6 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.validation.annotation.Validated;
 
-import javax.validation.constraints.Pattern;
-
 @Validated
 @Configuration
 public class EmailConfig {
