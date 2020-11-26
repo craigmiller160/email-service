@@ -10,8 +10,8 @@ spring:
 
 oauth2:
   auth-server-host: https://localhost:7003
-  client-key:
-  client-secret:
+  client-key: b68d4457-e6db-4c6c-9a08-efb56fe3981e
+  client-secret: 532f5839-2327-4de0-8912-f23df24ede22
 
 logging:
   level:
