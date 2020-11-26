@@ -1,0 +1,14 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: none
+    datasource:
+      url: jdbc:postgresql://${spring.datasource.host}:${spring.datasource.port}/email_service_dev
+
+oauth2:
+  client-name: email-service
+  insecure-paths: "/actuator/health"
+
+logging:
+  level:
+    root: INFO
