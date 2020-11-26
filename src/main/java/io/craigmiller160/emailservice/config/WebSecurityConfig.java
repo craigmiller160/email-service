@@ -22,7 +22,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(final HttpSecurity http) throws Exception {
-        http.requiresChannel().anyRequest().requiresSecure()
+        http.csrf().disable()
+                .requiresChannel().anyRequest().requiresSecure()
                 .and()
                 .authorizeRequests()
                 .antMatchers(jwtValidationFilterConfigurer.getInsecurePathPatterns()).permitAll()
