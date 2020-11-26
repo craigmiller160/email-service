@@ -6,6 +6,8 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
+
 @Service
 public class EmailService {
 
@@ -19,19 +21,19 @@ public class EmailService {
         final var message = new SimpleMailMessage();
         Option.of(emailRequest.toAddresses())
                 .forEach(addresses -> {
-                    final var toAddresses = new String[0];
+                    final var toAddresses = new String[addresses.size()];
                     addresses.toArray(toAddresses);
                     message.setTo(toAddresses);
                 });
         Option.of(emailRequest.ccAddresses())
                 .forEach(addresses -> {
-                    final var ccAddresses = new String[0];
+                    final var ccAddresses = new String[addresses.size()];
                     addresses.toArray(ccAddresses);
                     message.setCc(ccAddresses);
                 });
         Option.of(emailRequest.bccAddresses())
                 .forEach(addresses -> {
-                    final var bccAddresses = new String[0];
+                    final var bccAddresses = new String[addresses.size()];
                     addresses.toArray(bccAddresses);
                     message.setBcc(bccAddresses);
                 });
