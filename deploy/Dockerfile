@@ -1,4 +1,4 @@
-FROM openjdk:15.0.1-jre-slim
+FROM openjdk:15.0.1-slim
 
 COPY build/email-service-*.jar /email-service.jar
 
