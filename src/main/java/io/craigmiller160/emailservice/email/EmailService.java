@@ -1,7 +1,9 @@
 package io.craigmiller160.emailservice.email;
 
 import io.craigmiller160.emailservice.dto.EmailRequest;
+import io.craigmiller160.emailservice.exception.SendEmailException;
 import io.vavr.control.Option;
+import io.vavr.control.Try;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
@@ -17,29 +19,32 @@ public class EmailService {
         this.javaMailSender = javaMailSender;
     }
 
-    public void sendEmail(final EmailRequest emailRequest) {
-        final var message = new SimpleMailMessage();
-        Option.of(emailRequest.toAddresses())
-                .forEach(addresses -> {
-                    final var toAddresses = new String[addresses.size()];
-                    addresses.toArray(toAddresses);
-                    message.setTo(toAddresses);
-                });
-        Option.of(emailRequest.ccAddresses())
-                .forEach(addresses -> {
-                    final var ccAddresses = new String[addresses.size()];
-                    addresses.toArray(ccAddresses);
-                    message.setCc(ccAddresses);
-                });
-        Option.of(emailRequest.bccAddresses())
-                .forEach(addresses -> {
-                    final var bccAddresses = new String[addresses.size()];
-                    addresses.toArray(bccAddresses);
-                    message.setBcc(bccAddresses);
-                });
-        message.setSubject(emailRequest.subject());
-        message.setText(emailRequest.text());
-        javaMailSender.send(message);
+    public Try<Void> sendEmail(final EmailRequest emailRequest) {
+        return Try.run(() -> {
+            final var message = new SimpleMailMessage();
+            Option.of(emailRequest.toAddresses())
+                    .forEach(addresses -> {
+                        final var toAddresses = new String[addresses.size()];
+                        addresses.toArray(toAddresses);
+                        message.setTo(toAddresses);
+                    });
+            Option.of(emailRequest.ccAddresses())
+                    .forEach(addresses -> {
+                        final var ccAddresses = new String[addresses.size()];
+                        addresses.toArray(ccAddresses);
+                        message.setCc(ccAddresses);
+                    });
+            Option.of(emailRequest.bccAddresses())
+                    .forEach(addresses -> {
+                        final var bccAddresses = new String[addresses.size()];
+                        addresses.toArray(bccAddresses);
+                        message.setBcc(bccAddresses);
+                    });
+            message.setSubject(emailRequest.subject());
+            message.setText(emailRequest.text());
+            javaMailSender.send(message);
+        })
+                .recoverWith(ex -> Try.failure(new SendEmailException("Error sending email", ex)));
     }
 
 }
