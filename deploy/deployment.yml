@@ -18,6 +18,12 @@ spec:
           envFrom:
             - configMapRef:
                 name: email-service-configmap
+          env:
+            - name: CRAIG_EMAILER_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: craig-emailer-password
+                  key: CRAIG_EMAILER_PASSWORD
           livenessProbe:
             httpGet:
               path: /actuator/health
