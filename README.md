@@ -12,7 +12,11 @@ A special email account, `craigmiller.emailer@gmail.com` has been setup for this
 
 An environment variable, `CRAIG_EMAILER_PASSWORD`, must be created. This variable will contain the password. This completely separates the password from the application.
 
-For development, this variable should be created on the dev linux environment. For production, it needs to be stored in a Kubernetes secret.
+For development, this variable should be created on the dev linux environment. For production, it needs to be stored in a Kubernetes secret. Assuming the password has been setup in that environment variable on the dev machine, use this command to create the Kubernetes secret for it:
+
+```
+kubectl create secret generic craig-emailer-password --from-literal=CRAIG_EMAILER_PASSWORD=$CRAIG_EMAILER_PASSWORD
+```
 
 ## Running in Dev
 
