@@ -5,7 +5,11 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
+import org.springframework.validation.annotation.Validated;
 
+import javax.validation.constraints.Pattern;
+
+@Validated
 @Configuration
 public class EmailConfig {
 
@@ -22,10 +26,10 @@ public class EmailConfig {
                        @Value("${spring.mail.port}") final int port,
                        @Value("${spring.mail.username}") final String username,
                        @Value("${spring.mail.password}") final String password,
-                       @Value("${spring.mail.properties.mail.smtp.auth}") final String mailAuth,
-                       @Value("${spring.mail.properties.mail.smtp.ssl.enable}") final String mailSsl,
-                       @Value("${spring.mail.properties.mail.smtp.starttls.enable}") final String mailStartTls,
-                       @Value("${spring.mail.properties.mail.smtp.debug}") final String debug) {
+                       @Pattern(regexp = "true|false") @Value("${spring.mail.properties.mail.smtp.auth}") final String mailAuth,
+                       @Pattern(regexp = "true|false") @Value("${spring.mail.properties.mail.smtp.ssl.enable}") final String mailSsl,
+                       @Pattern(regexp = "true|false") @Value("${spring.mail.properties.mail.smtp.starttls.enable}") final String mailStartTls,
+                       @Pattern(regexp = "true|false") @Value("${spring.mail.properties.mail.smtp.debug}") final String debug) {
         this.host = host;
         this.port = port;
         this.username = username;
