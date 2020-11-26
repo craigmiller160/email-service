@@ -51,10 +51,14 @@ public class EmailService {
                     });
             message.setSubject(emailRequest.subject());
             message.setText(emailRequest.text());
+
             javaMailSender.send(message);
             log.info("Email sent successfully");
         })
-                .recoverWith(ex -> Try.failure(new SendEmailException("Error sending email", ex)));
+                .recoverWith(ex -> {
+                    final var message = String.format("SMTP Error: %s - %s", ex.getClass().getName(), ex.getMessage());
+                    return Try.failure(new SendEmailException(message, ex));
+                });
     }
 
 }
