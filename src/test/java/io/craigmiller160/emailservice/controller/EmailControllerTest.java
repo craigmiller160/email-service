@@ -11,6 +11,7 @@ import io.craigmiller160.emailservice.dto.EmailRequest;
 import io.craigmiller160.emailservice.email.EmailService;
 import io.craigmiller160.emailservice.testutils.JwtUtils;
 import io.craigmiller160.oauth2.config.OAuthConfig;
+import io.vavr.control.Try;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -93,7 +94,7 @@ public class EmailControllerTest {
     }
 
     @Test
-    public void test_sendEmail() {
+    public void test_sendEmail() throws Exception {
         final var emailRequest = new EmailRequest(
                 List.of(TO_1, TO_2),
                 List.of(CC_1, CC_2),
@@ -101,6 +102,9 @@ public class EmailControllerTest {
                 SUBJECT,
                 MESSAGE
         );
+
+        when(emailService.sendEmail(emailRequest))
+                .thenReturn(Try.success(null));
 
         final var result = apiProcessor.call(apiConfig -> {
             apiConfig.request(requestConfig -> {
