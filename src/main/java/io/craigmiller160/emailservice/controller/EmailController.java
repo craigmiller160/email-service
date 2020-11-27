@@ -21,7 +21,7 @@ public class EmailController {
     @PostMapping
     public ResponseEntity<Void> sendEmail(@RequestBody final EmailRequest emailRequest) {
         emailService.sendEmail(emailRequest).get();
-        return ResponseEntity.ok().build();
+        return ResponseEntity.noContent().build();
     }
 
 }
