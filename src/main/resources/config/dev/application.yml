@@ -7,6 +7,7 @@ spring:
     port: 30001
     username: user
     password: password
+    db-name: email_service_dev
   mail:
     properties:
       mail:
