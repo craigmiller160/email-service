@@ -20,4 +20,6 @@ kubectl create secret generic craig-emailer-password --from-literal=CRAIG_EMAILE
 
 ## Running in Dev
 
+The `sso-oauth2-server` must be running in Dev (locally) or else this app will fail, because it needs to download the JWKSet.
+
 Execute the run script in the root of this project: `sh run.sh`.
