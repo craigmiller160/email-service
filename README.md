@@ -23,3 +23,7 @@ kubectl create secret generic craig-emailer-password --from-literal=CRAIG_EMAILE
 The `sso-oauth2-server` must be running in Dev (locally) or else this app will fail, because it needs to download the JWKSet.
 
 Execute the run script in the root of this project: `sh run.sh`.
+
+## Adding TLS Cert to Other Project
+
+To add the TLS Cert for this application to another project that needs it, simply copy over the files from the `keys` directory in project resources.
