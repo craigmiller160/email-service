@@ -112,9 +112,12 @@ public class EmailControllerTest {
                 requestConfig.setMethod(HttpMethod.POST);
                 requestConfig.setBody(new Json(emailRequest));
             });
+            apiConfig.response(responseConfig -> {
+                responseConfig.setStatus(204);
+            });
         });
 
-        assertEquals(200, result.getResponse().getStatus());
+        assertEquals(204, result.getResponse().getStatus());
         verify(emailService, times(1))
                 .sendEmail(emailRequest);
     }
