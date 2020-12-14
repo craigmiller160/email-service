@@ -24,6 +24,11 @@ spec:
                 secretKeyRef:
                   name: craig-emailer-password
                   key: CRAIG_EMAILER_PASSWORD
+            - name: spring.datasource.password
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-root-password
+                  key: POSTGRES_ROOT_PASSWORD
           livenessProbe:
             httpGet:
               path: /actuator/health
