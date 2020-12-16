@@ -18,6 +18,14 @@ For development, this variable should be created on the dev linux environment. F
 kubectl create secret generic craig-emailer-password --from-literal=CRAIG_EMAILER_PASSWORD=$CRAIG_EMAILER_PASSWORD
 ```
 
+## Client Secret Setup
+
+The Client Secret for prod needs to be stored in a kubernetes secret.
+
+```
+kubectl create secret generic email-service-client-secret --from-literal=client-secret=######
+```
+
 ## Running in Dev
 
 The `sso-oauth2-server` must be running in Dev (locally) or else this app will fail, because it needs to download the JWKSet.
