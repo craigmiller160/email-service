@@ -30,7 +30,7 @@ spec:
                   name: postgres-root-password
                   key: POSTGRES_ROOT_PASSWORD
             - name: oauth2.client-secret
-              vlaueFrom:
+              valueFrom:
                 secretKeyRef:
                   name: email-service-client-secret
                   key: client-secret
