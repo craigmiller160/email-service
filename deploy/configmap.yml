@@ -11,6 +11,5 @@ data:
   spring.datasource.db-name: email_service_prod
   oauth2.auth-server-host: https://sso-oauth2-server-service:8443
   oauth2.client-key: 17795450-ff0d-47fe-b23c-dfe6d7f090d8
-  oauth2.client-secret: c078af10-7f97-4afb-981d-76ecacb7dbfd
   # TODO add below to common properties
   spring.jpa.properties.hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
