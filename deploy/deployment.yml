@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: email-service
-          image: localhost:32000/email-service:1.1.0-SNAPSHOT
+          image: localhost:32000/email-service:1.1.0
           envFrom:
             - configMapRef:
                 name: email-service-configmap
