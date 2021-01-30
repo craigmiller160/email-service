@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: email-service
-          image: craigmiller160.ddns.net/email-service:1.1.1
+          image: craigmiller160.ddns.net/email-service:1.1.2
           envFrom:
             - configMapRef:
                 name: email-service-configmap

@@ -39,6 +39,7 @@ spring:
 oauth2:
   client-name: email-service
   insecure-paths: "/actuator/health"
+  disable-csrf: true
 
 logging:
   level:
