@@ -14,6 +14,19 @@
     <name>email-service</name>
     <description>Email sending micro-service.</description>
 
+    <distributionManagement>
+        <repository>
+            <id>nexus</id>
+            <name>Releases</name>
+            <url>https://craigmiller160.ddns.net:30003/repository/maven-releases</url>
+        </repository>
+        <snapshotRepository>
+            <id>nexus</id>
+            <name>Snapshot</name>
+            <url>https://craigmiller160.ddns.net:30003/repository/maven-snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
+
     <properties>
         <oauth2.utils.version>1.8.0</oauth2.utils.version>
         <api.test.processor.version>1.2.2</api.test.processor.version>
