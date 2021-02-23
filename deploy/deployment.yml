@@ -15,7 +15,6 @@ spec:
       containers:
         - name: email-service
           image: craigmiller160.ddns.net:30004/email-service:1.1.3
-#          imagePullPolicy: Always
           envFrom:
             - configMapRef:
                 name: email-service-configmap
