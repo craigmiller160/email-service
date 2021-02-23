@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: email-service
-          image: craigmiller160.ddns.net:30004/email-service:1.2.0-SNAPSHOT
+          image: craigmiller160.ddns.net:30004/email-service:latest
           envFrom:
             - configMapRef:
                 name: email-service-configmap
@@ -47,10 +47,11 @@ kind: Service
 metadata:
   name: email-service-service
 spec:
-  type: ClusterIP
+  type: NodePort
   selector:
     app: email-service
   ports:
     - port: 8443
       targetPort: 8443
+      nodePort: 30005
       protocol: TCP
