@@ -1,6 +1,6 @@
 package io.craigmiller160.emailservice.config;
 
-import io.craigmiller160.oauth2.security.JwtValidationFilterConfigurer;
+import io.craigmiller160.spring.oauth2.security.JwtValidationFilterConfigurer;
 import io.craigmiller160.webutils.security.AuthEntryPoint;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
