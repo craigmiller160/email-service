@@ -5,12 +5,11 @@ import com.nimbusds.jose.jwk.JWKSet;
 import io.craigmiller160.apitestprocessor.ApiTestProcessor;
 import io.craigmiller160.apitestprocessor.body.Json;
 import io.craigmiller160.apitestprocessor.config.AuthType;
-import io.craigmiller160.apitestprocessor.config.SetupConfig;
 import io.craigmiller160.emailservice.config.EmailConfig;
 import io.craigmiller160.emailservice.dto.EmailRequest;
 import io.craigmiller160.emailservice.email.EmailService;
 import io.craigmiller160.emailservice.testutils.JwtUtils;
-import io.craigmiller160.oauth2.config.OAuthConfig;
+import io.craigmiller160.oauth2.config.OAuth2Config;
 import io.vavr.control.Try;
 import org.apache.catalina.filters.RestCsrfPreventionFilter;
 import org.junit.jupiter.api.BeforeAll;
@@ -52,7 +51,7 @@ public class EmailControllerTest {
     private static JWKSet jwkSet;
 
     @MockBean
-    private OAuthConfig oAuthConfig;
+    private OAuth2Config oAuthConfig;
     @MockBean
     private EmailConfig emailConfig;
     @MockBean
