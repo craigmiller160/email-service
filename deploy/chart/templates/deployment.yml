@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Values.deployment.name }}
+  name: {{ .Values.appName }}
 spec:
   replicas: {{ .Values.deployment.replicas | default 1 }}
   selector:
     matchLabels:
-      app: {{ .Values.deployment.name }}
+      app: {{ .Values.appName }}
   template:
     metadata:
       labels:
-        app: {{ .Values.deployment.name }}
+        app: {{ .Values.appName }}
     spec:
       containers:
-        - name: {{ .Values.deployment.name }}
+        - name: {{ .Values.appName }}
           image: {{ .Values.deployment.image }}
           imagePullPolicy: IfNotPresent
           envFrom:

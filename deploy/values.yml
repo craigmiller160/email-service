@@ -1,5 +1,5 @@
+appName: email-service
 deployment:
-  name: email-service
   image: nexus-docker-craigmiller160.ddns.net/email-service:latest
   configMaps:
     - email-service-configmap
@@ -14,3 +14,7 @@ deployment:
     - envVariable: oauth2.client-secret
       secretName: email-service-client-secret
       key: client-secret
+service:
+  type: ClusterIP
+  ports:
+    - containerPort: 8443

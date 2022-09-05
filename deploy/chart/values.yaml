@@ -1,9 +1,15 @@
+appName: name
 deployment:
-  name: deployment-name
   image: image-name
+  ports:
+    - 8443
   configMaps:
     - configmap-name
   secrets:
     - envVariable: variable-name
       secretName: secret-name
       secretKey: key-in-secret
+service:
+  type: ClusterIP
+  ports:
+    - containerPort: 8443
