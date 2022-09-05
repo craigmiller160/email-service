@@ -1,0 +1,3 @@
+deployment:
+  name: email-service
+  image: nexus-docker-craigmiller160.ddns.net/email-service:latest
