@@ -30,11 +30,13 @@ spec:
                 secretKeyRef:
                   name: postgres-root-password
                   key: POSTGRES_ROOT_PASSWORD
+            # TODO this one needs a 1password secret
             - name: oauth2.client-secret
               valueFrom:
                 secretKeyRef:
                   name: email-service-client-secret
                   key: client-secret
+          # TODO how to transfer this over?
           livenessProbe:
             httpGet:
               path: /actuator/health

@@ -3,3 +3,14 @@ deployment:
   image: nexus-docker-craigmiller160.ddns.net/email-service:latest
   configMaps:
     - email-service-configmap
+  secrets:
+    - envVariable: CRAIG_EMAILER_PASSWORD
+      secretName: craig-emailer-password
+      secretKey: CRAIG_EMAILER_PASSWORD
+      # TODO this is limited to specific namespaces
+    - envVariable: spring.datasource.password
+      secretName: postgres-root-account
+      key: password
+    - envVariable: oauth2.client-secret
+      secretName: email-service-client-secret
+      key: client-secret
