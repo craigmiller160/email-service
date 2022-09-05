@@ -16,3 +16,7 @@ spec:
         - name: {{ .Values.deployment.name }}
           image: {{ .Values.deployment.image }}
           imagePullPolicy: IfNotPresent
+          envFrom:
+            {{- range $configmap := .Values.deployment.configmaps  }}
+            - {{ $configmap }}
+            {{- end}}

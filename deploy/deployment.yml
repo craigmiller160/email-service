@@ -19,6 +19,7 @@ spec:
             - configMapRef:
                 name: email-service-configmap
           env:
+            # TODO this one needs a 1password secret
             - name: CRAIG_EMAILER_PASSWORD
               valueFrom:
                 secretKeyRef:
