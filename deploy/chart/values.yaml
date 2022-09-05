@@ -1,0 +1,9 @@
+deployment:
+  name: deployment-name
+  image: image-name
+  configMaps:
+    - configmap-name
+  secrets:
+    - envVariable: variable-name
+      secretName: secret-name
+      secretKey: key-in-secret
