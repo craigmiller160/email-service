@@ -7,7 +7,6 @@ deployment:
     - envVariable: CRAIG_EMAILER_PASSWORD
       secretName: craig-emailer-password
       secretKey: CRAIG_EMAILER_PASSWORD
-      # TODO this is limited to specific namespaces
     - envVariable: spring.datasource.password
       secretName: postgres-root-account
       secretKey: password
