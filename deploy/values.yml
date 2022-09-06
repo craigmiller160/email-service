@@ -10,9 +10,10 @@ deployment:
     - envVariable: spring.datasource.password
       secretName: postgres-root-account
       secretKey: password
+    # TODO try and rename the username/password keys for this
     - envVariable: oauth2.client-secret
-      secretName: email-service-client-secret
-      secretKey: client-secret
+      secretName: email-service-oauth2-keys
+      secretKey: password
   livenessProbe:
     path: /actuator/health
     port: 8443
