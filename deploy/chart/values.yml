@@ -1,5 +1,5 @@
-appName: email-service
 app-deployment:
+  appName: email-service
   deployment:
     image: nexus-docker-craigmiller160.ddns.net/email-service:latest
     configMaps:
