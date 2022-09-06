@@ -10,10 +10,10 @@ deployment:
       # TODO this is limited to specific namespaces
     - envVariable: spring.datasource.password
       secretName: postgres-root-account
-      key: password
+      secretKey: password
     - envVariable: oauth2.client-secret
       secretName: email-service-client-secret
-      key: client-secret
+      secretKey: client-secret
 service:
   type: ClusterIP
   ports:

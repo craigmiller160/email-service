@@ -24,6 +24,14 @@ spec:
             {{- range $configmap := .Values.deployment.configmaps  }}
             - {{ $configmap }}
             {{- end}}
+          env:
+            {{- range $secret := .Values.deployment.secrets  }}
+            - name: {{ $secret.envVariable }}
+              valueFrom:
+                secretKeyRef:
+                  name: {{ $secret.secretName }}
+                  key: {{ $secret.secretKey }}
+            {{- end}}
 ---
 apiVersion: v1
 kind: Service
