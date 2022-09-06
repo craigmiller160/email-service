@@ -9,6 +9,10 @@ deployment:
     - envVariable: variable-name
       secretName: secret-name
       secretKey: key-in-secret
+  livenessProbe:
+    path: /the/path
+    port: 1234
+    scheme: scheme
 service:
   type: ClusterIP
   ports:

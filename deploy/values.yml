@@ -14,6 +14,10 @@ deployment:
     - envVariable: oauth2.client-secret
       secretName: email-service-client-secret
       secretKey: client-secret
+  livenessProbe:
+    path: /actuator/health
+    port: 8443
+    scheme: HTTPS
 service:
   type: ClusterIP
   ports:

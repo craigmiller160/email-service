@@ -32,6 +32,15 @@ spec:
                   name: {{ $secret.secretName }}
                   key: {{ $secret.secretKey }}
             {{- end}}
+          {{- if .Values.deployment.livenessProbe }}
+          livenessProbe:
+            httpGet:
+              path: {{ .Values.deployment.livenessProbe.path }}
+              port: {{ .Values.deployment.livenessProbe.port }}
+              scheme: {{ .Values.deployment.livenessProbe.scheme }}
+            initialDelaySeconds: 10
+            periodSeconds: 300
+          {{- end}}
 ---
 apiVersion: v1
 kind: Service
