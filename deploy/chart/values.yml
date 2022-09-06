@@ -1,29 +1,30 @@
 appName: email-service
-deployment:
-  image: nexus-docker-craigmiller160.ddns.net/email-service:latest
-  configMaps:
-    - email-service-configmap
-  secrets:
-    - envVariable: CRAIG_EMAILER_PASSWORD
-      secretName: email-service-gmail-credentials
-      secretKey: password
-    - envVariable: spring.datasource.username
-      secretName: postgres-root-account
-      secretKey: username
-    - envVariable: spring.datasource.password
-      secretName: postgres-root-account
-      secretKey: password
-    - envVariable: oauth2.client-secret
-      secretName: email-service-oauth2-keys
-      secretKey: clientSecret
-    - envVariable: oauth2.client-key
-      secretName: email-service-oauth2-keys
-      secretKey: clientKey
-  livenessProbe:
-    path: /actuator/health
-    port: 8443
-    scheme: HTTPS
-service:
-  type: ClusterIP
-  ports:
-    - containerPort: 8443
+app_deployment:
+  deployment:
+    image: nexus-docker-craigmiller160.ddns.net/email-service:latest
+    configMaps:
+      - email-service-configmap
+    secrets:
+      - envVariable: CRAIG_EMAILER_PASSWORD
+        secretName: email-service-gmail-credentials
+        secretKey: password
+      - envVariable: spring.datasource.username
+        secretName: postgres-root-account
+        secretKey: username
+      - envVariable: spring.datasource.password
+        secretName: postgres-root-account
+        secretKey: password
+      - envVariable: oauth2.client-secret
+        secretName: email-service-oauth2-keys
+        secretKey: clientSecret
+      - envVariable: oauth2.client-key
+        secretName: email-service-oauth2-keys
+        secretKey: clientKey
+    livenessProbe:
+      path: /actuator/health
+      port: 8443
+      scheme: HTTPS
+  service:
+    type: ClusterIP
+    ports:
+      - containerPort: 8443
