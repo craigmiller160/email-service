@@ -25,6 +25,7 @@ app-deployment:
       port: 8443
       scheme: HTTPS
   service:
+    enable: true
     type: ClusterIP
     ports:
       - containerPort: 8443
