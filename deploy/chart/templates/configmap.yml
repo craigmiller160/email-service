@@ -8,4 +8,4 @@ data:
   spring.datasource.host: postgres-service11.default
   spring.datasource.port: "5432"
   spring.datasource.db-name: email_service_prod
-  oauth2.auth-server-host: https://sso-oauth2-server-service.default:8443
+  oauth2.auth-server-host: https://sso-oauth2-server-service11.default:8443
