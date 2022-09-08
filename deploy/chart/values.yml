@@ -4,6 +4,8 @@ app-deployment:
     image: nexus-docker-craigmiller160.ddns.net/email-service:latest
     configMaps:
       - email-service-configmap
+    ports:
+      - 8443
     secrets:
       - envVariable: CRAIG_EMAILER_PASSWORD
         secretName: email-service-gmail-credentials
