@@ -20,8 +20,9 @@ app-deployment:
       secretName: email-service-oauth2-keys
       secretKey: clientKey
   livenessProbe:
-    path: /actuator/health
-    port: 8443
-    scheme: HTTPS
+    httpGet:
+      path: /actuator/health
+      port: 8443
+      scheme: HTTPS
   ports:
     - containerPort: 8443
