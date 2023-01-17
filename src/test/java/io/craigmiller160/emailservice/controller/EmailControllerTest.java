@@ -9,7 +9,6 @@ import io.craigmiller160.emailservice.config.EmailConfig;
 import io.craigmiller160.emailservice.dto.EmailRequest;
 import io.craigmiller160.emailservice.email.EmailService;
 import io.craigmiller160.emailservice.testutils.JwtUtils;
-import io.craigmiller160.oauth2.config.OAuth2Config;
 import io.vavr.control.Try;
 import org.apache.catalina.filters.RestCsrfPreventionFilter;
 import org.junit.jupiter.api.BeforeAll;
@@ -29,9 +28,7 @@ import java.security.KeyPair;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @SpringBootTest
 @ExtendWith(SpringExtension.class)
@@ -50,8 +47,6 @@ public class EmailControllerTest {
     private static KeyPair keyPair;
     private static JWKSet jwkSet;
 
-    @MockBean
-    private OAuth2Config oAuthConfig;
     @MockBean
     private EmailConfig emailConfig;
     @MockBean
@@ -76,13 +71,6 @@ public class EmailControllerTest {
 
     @BeforeEach
     public void beforeEach() throws Exception {
-        when(oAuthConfig.getJwkSet())
-                .thenReturn(jwkSet);
-        when(oAuthConfig.getClientKey())
-                .thenReturn(JwtUtils.CLIENT_KEY);
-        when(oAuthConfig.getClientName())
-                .thenReturn(JwtUtils.CLIENT_NAME);
-
         final var jwt = JwtUtils.createJwt();
         token = JwtUtils.signAndSerializeJwt(jwt, keyPair.getPrivate());
 
