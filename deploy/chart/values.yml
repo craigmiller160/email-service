@@ -14,12 +14,12 @@ app_deployment:
     - envVariable: CRAIG_EMAILER_PASSWORD
       secretName: email-service-gmail-credentials
       secretKey: password
-    - envVariable: oauth2.client-secret
+    - envVariable: keycloak.credentials.secret
       secretName: email-service-oauth2-keys
-      secretKey: clientSecret
-    - envVariable: oauth2.client-key
+      secretKey: kcClientSecret
+    - envVariable: keycloak.resource
       secretName: email-service-oauth2-keys
-      secretKey: clientKey
+      secretKey: kcClientId
   livenessProbe:
     httpGet:
       path: /actuator/health
