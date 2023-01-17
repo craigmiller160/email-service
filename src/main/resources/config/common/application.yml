@@ -28,6 +28,16 @@ spring:
           ssl:
             enable: true
 
+keycloak:
+  realm: apps-dev
+  auth-server-url: https://auth-craigmiller160.ddns.net
+  ssl-required: all
+  resource: email-service
+  use-resource-role-mappings: true
+  credentials:
+    secret: ZHokp4c6gUUTqiPqjGW1zoxRJSs0x7zz
+  bearer-only: true
+
 logging:
   level:
     root: INFO
