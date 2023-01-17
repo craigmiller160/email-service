@@ -2,22 +2,11 @@ server:
   port: 7100
 
 spring:
-  datasource:
-    host: craigmiller160.ddns.net
-    port: 30001
-    username: postgres_root
-    password: ${POSTGRES_ROOT_PASSWORD}
-    db-name: email_service_dev
   mail:
     properties:
       mail:
         smtp:
           debug: true
-
-oauth2:
-  auth-server-host: https://localhost:7003
-  client-key: b68d4457-e6db-4c6c-9a08-efb56fe3981e
-  client-secret: 532f5839-2327-4de0-8912-f23df24ede22
 
 logging:
   level:
