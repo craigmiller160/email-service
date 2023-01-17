@@ -8,6 +8,11 @@ spring:
         smtp:
           debug: true
 
+keycloak:
+  realm: apps-dev
+  credentials:
+    secret: ZHokp4c6gUUTqiPqjGW1zoxRJSs0x7zz
+
 logging:
   level:
     io.craigmiller160.emailservice: DEBUG
