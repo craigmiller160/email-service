@@ -17,4 +17,3 @@ logging:
   level:
     io.craigmiller160.emailservice: DEBUG
     io.craigmiller160.webutils: DEBUG
-    io.craigmiller160.oauth2: DEBUG
