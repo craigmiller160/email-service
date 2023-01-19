@@ -7,8 +7,8 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class KeycloakConfig {
-    @Bean
-    public KeycloakConfigResolver keycloakConfigResolver() {
-        return new KeycloakSpringBootConfigResolver();
-    }
+  @Bean
+  public KeycloakConfigResolver keycloakConfigResolver() {
+    return new KeycloakSpringBootConfigResolver();
+  }
 }
