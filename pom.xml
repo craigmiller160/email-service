@@ -36,6 +36,13 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            <dependency>
+                <groupId>org.testcontainers</groupId>
+                <artifactId>testcontainers-bom</artifactId>
+                <version>${testcontainers.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -48,6 +55,8 @@
         <spotless.version>2.26.0</spotless.version>
         <maven.git.hooks.version>1.0.1</maven.git.hooks.version>
         <git.hooks.plugin.version>3.3.0</git.hooks.plugin.version>
+        <testcontainers.version>1.17.2</testcontainers.version>
+        <keycloak.testcontainer.version>2.4.0</keycloak.testcontainer.version>
     </properties>
 
     <dependencies>
