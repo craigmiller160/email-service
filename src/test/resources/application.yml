@@ -8,4 +8,8 @@ spring:
     password: sa
 
 keycloak:
-  realm: apps-dev
+  auth-server-url: ${testcontainers.common.keycloak.url}
+  realm: ${testcontainers.common.keycloak.realm}
+  resource: ${testcontainers.common.keycloak.client.id}
+  credentials:
+    secret: ${testcontainers.common.keycloak.client.secret}
