@@ -16,3 +16,7 @@ keycloak:
   credentials:
     secret: ${testcontainers.common.keycloak.client.secret}
   ssl-required: all
+
+logging:
+  level:
+    org.keycloak: TRACE
