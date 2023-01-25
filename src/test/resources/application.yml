@@ -11,5 +11,8 @@ keycloak:
   auth-server-url: ${testcontainers.common.keycloak.url}
   realm: ${testcontainers.common.keycloak.realm}
   resource: ${testcontainers.common.keycloak.client.id}
+  use-resource-role-mappings: true
+  bearer-only: true
   credentials:
     secret: ${testcontainers.common.keycloak.client.secret}
+  ssl-required: all
