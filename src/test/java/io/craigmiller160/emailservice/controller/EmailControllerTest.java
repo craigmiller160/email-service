@@ -12,6 +12,7 @@ import io.craigmiller160.emailservice.config.EmailConfig;
 import io.craigmiller160.emailservice.dto.EmailRequest;
 import io.craigmiller160.emailservice.email.EmailService;
 import io.craigmiller160.emailservice.testutils.JwtUtils;
+import io.craigmiller160.testcontainers.common.TestcontainersExtension;
 import io.vavr.control.Try;
 import java.security.KeyPair;
 import java.util.List;
@@ -28,7 +29,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 
 @SpringBootTest
-@ExtendWith(SpringExtension.class)
+@ExtendWith({TestcontainersExtension.class, SpringExtension.class})
 @AutoConfigureMockMvc
 public class EmailControllerTest {
 
