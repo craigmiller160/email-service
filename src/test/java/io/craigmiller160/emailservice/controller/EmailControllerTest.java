@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.nimbusds.jose.jwk.JWKSet;
 import io.craigmiller160.apitestprocessor.ApiTestProcessor;
 import io.craigmiller160.apitestprocessor.body.Json;
 import io.craigmiller160.apitestprocessor.config.AuthType;
@@ -13,8 +12,8 @@ import io.craigmiller160.emailservice.dto.EmailRequest;
 import io.craigmiller160.emailservice.email.EmailService;
 import io.craigmiller160.emailservice.testutils.JwtUtils;
 import io.craigmiller160.testcontainers.common.TestcontainersExtension;
+import io.craigmiller160.testcontainers.common.core.AuthenticationHelper;
 import io.vavr.control.Try;
-import java.security.KeyPair;
 import java.util.List;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -42,9 +41,6 @@ public class EmailControllerTest {
   private static final String BCC_1 = "five@gmail.com";
   private static final String BCC_2 = "six@gmail.com";
 
-  private static KeyPair keyPair;
-  private static JWKSet jwkSet;
-
   @MockBean private EmailConfig emailConfig;
   @MockBean private EmailService emailService;
 
@@ -52,18 +48,18 @@ public class EmailControllerTest {
   @Autowired private ObjectMapper objectMapper;
 
   private ApiTestProcessor apiProcessor;
-  private String token;
+  private static String token;
 
   @BeforeAll
-  public static void keySetup() throws Exception {
-    keyPair = JwtUtils.createKeyPair();
-    jwkSet = JwtUtils.createJwkSet(keyPair);
+  public static void tokenSetup() {
+    final var authHelper = new AuthenticationHelper();
+    final var user = authHelper.createUser("user_%s@gmail.com");
+    token = authHelper.login(user).getToken();
   }
 
   @BeforeEach
   public void beforeEach() throws Exception {
     final var jwt = JwtUtils.createJwt();
-    token = JwtUtils.signAndSerializeJwt(jwt, keyPair.getPrivate());
 
     apiProcessor =
         new ApiTestProcessor(
