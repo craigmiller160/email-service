@@ -12,16 +12,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(path = "/email")
 public class EmailController {
 
-    private final EmailService emailService;
+  private final EmailService emailService;
 
-    public EmailController(final EmailService emailService) {
-        this.emailService = emailService;
-    }
+  public EmailController(final EmailService emailService) {
+    this.emailService = emailService;
+  }
 
-    @PostMapping
-    public ResponseEntity<Void> sendEmail(@RequestBody final EmailRequest emailRequest) {
-        emailService.sendEmail(emailRequest).get();
-        return ResponseEntity.noContent().build();
-    }
-
+  @PostMapping
+  public ResponseEntity<Void> sendEmail(@RequestBody final EmailRequest emailRequest) {
+    emailService.sendEmail(emailRequest).get();
+    return ResponseEntity.noContent().build();
+  }
 }

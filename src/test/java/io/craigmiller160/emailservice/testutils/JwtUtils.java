@@ -8,7 +8,6 @@ import com.nimbusds.jose.jwk.KeyUse;
 import com.nimbusds.jose.jwk.RSAKey;
 import com.nimbusds.jwt.JWTClaimsSet;
 import com.nimbusds.jwt.SignedJWT;
-
 import java.security.KeyPair;
 import java.security.KeyPairGenerator;
 import java.security.PrivateKey;
@@ -20,59 +19,60 @@ import java.util.List;
 
 public class JwtUtils {
 
-    public static final String ROLE_1 = "ROLE_1";
-    public static final String ROLE_2 = "ROLE_2";
-    public static final String USERNAME = "username";
-    public static final String ROLES_CLAIM = "roles";
-    public static final String CLIENT_KEY = "clientKey";
-    public static final String CLIENT_NAME = "clientName";
-    public static final String FIRST_NAME = "firstName";
-    public static final String LAST_NAME = "lastName";
-    public static final String TOKEN_ID = "JWTID";
+  public static final String ROLE_1 = "ROLE_1";
+  public static final String ROLE_2 = "ROLE_2";
+  public static final String USERNAME = "username";
+  public static final String ROLES_CLAIM = "roles";
+  public static final String CLIENT_KEY = "clientKey";
+  public static final String CLIENT_NAME = "clientName";
+  public static final String FIRST_NAME = "firstName";
+  public static final String LAST_NAME = "lastName";
+  public static final String TOKEN_ID = "JWTID";
 
-    public static KeyPair createKeyPair() throws Exception {
-        final var keyPairGen = KeyPairGenerator.getInstance("RSA");
-        return keyPairGen.generateKeyPair();
-    }
+  public static KeyPair createKeyPair() throws Exception {
+    final var keyPairGen = KeyPairGenerator.getInstance("RSA");
+    return keyPairGen.generateKeyPair();
+  }
 
-    public static JWKSet createJwkSet(final KeyPair keyPair) {
-        final var builder = new RSAKey.Builder((RSAPublicKey) keyPair.getPublic())
-                .keyUse(KeyUse.SIGNATURE)
-                .algorithm(JWSAlgorithm.RS256)
-                .keyID("oauth-jwt");
-        return new JWKSet(builder.build());
-    }
+  public static JWKSet createJwkSet(final KeyPair keyPair) {
+    final var builder =
+        new RSAKey.Builder((RSAPublicKey) keyPair.getPublic())
+            .keyUse(KeyUse.SIGNATURE)
+            .algorithm(JWSAlgorithm.RS256)
+            .keyID("oauth-jwt");
+    return new JWKSet(builder.build());
+  }
 
-    public static SignedJWT createJwt() {
-        return createJwt(100);
-    }
+  public static SignedJWT createJwt() {
+    return createJwt(100);
+  }
 
-    public static SignedJWT createJwt(final long expMinutes) {
+  public static SignedJWT createJwt(final long expMinutes) {
 
-        final var header = new JWSHeader.Builder(JWSAlgorithm.RS256)
-                .build();
+    final var header = new JWSHeader.Builder(JWSAlgorithm.RS256).build();
 
-        final var exp = LocalDateTime.now().plusMinutes(expMinutes);
-        final var expDate = Date.from(exp.atZone(ZoneId.systemDefault()).toInstant());
+    final var exp = LocalDateTime.now().plusMinutes(expMinutes);
+    final var expDate = Date.from(exp.atZone(ZoneId.systemDefault()).toInstant());
 
-        final var claims = new JWTClaimsSet.Builder()
-                .jwtID(TOKEN_ID)
-                .issueTime(new Date())
-                .subject(USERNAME)
-                .expirationTime(expDate)
-                .claim(ROLES_CLAIM, List.of(ROLE_1, ROLE_2))
-                .claim("clientKey", CLIENT_KEY)
-                .claim("clientName", CLIENT_NAME)
-                .claim("firstName", FIRST_NAME)
-                .claim("lastName", LAST_NAME)
-                .build();
-        return new SignedJWT(header, claims);
-    }
+    final var claims =
+        new JWTClaimsSet.Builder()
+            .jwtID(TOKEN_ID)
+            .issueTime(new Date())
+            .subject(USERNAME)
+            .expirationTime(expDate)
+            .claim(ROLES_CLAIM, List.of(ROLE_1, ROLE_2))
+            .claim("clientKey", CLIENT_KEY)
+            .claim("clientName", CLIENT_NAME)
+            .claim("firstName", FIRST_NAME)
+            .claim("lastName", LAST_NAME)
+            .build();
+    return new SignedJWT(header, claims);
+  }
 
-    public static String signAndSerializeJwt(final SignedJWT jwt, final PrivateKey privateKey) throws Exception {
-        final var signer = new RSASSASigner(privateKey);
-        jwt.sign(signer);
-        return jwt.serialize();
-    }
-
+  public static String signAndSerializeJwt(final SignedJWT jwt, final PrivateKey privateKey)
+      throws Exception {
+    final var signer = new RSASSASigner(privateKey);
+    jwt.sign(signer);
+    return jwt.serialize();
+  }
 }

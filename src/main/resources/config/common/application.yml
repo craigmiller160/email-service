@@ -14,14 +14,6 @@ server:
     ciphers: ECDHE-ECDSA-AES256-GCM-SHA384,ECDHE-RSA-AES256-GCM-SHA384,ECDHE-ECDSA-CHACHA20-POLY1305,ECDHE-RSA-CHACHA20-POLY1305,ECDHE-ECDSA-AES128-GCM-SHA256,ECDHE-RSA-AES128-GCM-SHA256,ECDHE-ECDSA-AES256-SHA384,ECDHE-RSA-AES256-SHA384,ECDHE-ECDSA-AES128-SHA256,ECDHE-RSA-AES128-SHA256
 
 spring:
-  jpa:
-    properties:
-      hibernate.jdbc.time_zone: UTC
-      hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
-    hibernate:
-      ddl-auto: none
-  datasource:
-    url: jdbc:postgresql://${spring.datasource.host}:${spring.datasource.port}/${spring.datasource.db-name}
   mail:
     host: smtp.gmail.com
     port: 465
@@ -36,10 +28,12 @@ spring:
           ssl:
             enable: true
 
-oauth2:
-  client-name: email-service
-  insecure-paths: "/actuator/health"
-  disable-csrf: true
+keycloak:
+  auth-server-url: https://auth-craigmiller160.ddns.net
+  ssl-required: all
+  resource: email-service
+  use-resource-role-mappings: true
+  bearer-only: true
 
 logging:
   level:
