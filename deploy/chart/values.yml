@@ -4,7 +4,7 @@ app_deployment:
   configMap:
     spring.profiles.active: prod
     spring.config.location: classpath:/config/common/,classpath:/config/prod/
-    oauth2.auth-server-host: https://sso-oauth2-server:8443
+    keycloak.ream: apps-prod
   onepassworditems:
     - name: email-service-gmail-credentials
       itemPath: vaults/Home Server (Prod)/items/Email Service Gmail Credentials
