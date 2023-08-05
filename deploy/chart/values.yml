@@ -4,7 +4,7 @@ app_deployment:
   configMap:
     spring.profiles.active: prod
     spring.config.location: classpath:/config/common/,classpath:/config/prod/
-    keycloak.ream: apps-prod
+    keycloak.realm: apps-prod
   onepassworditems:
     - name: email-service-gmail-credentials
       itemPath: vaults/Home Server (Prod)/items/Email Service Gmail Credentials
