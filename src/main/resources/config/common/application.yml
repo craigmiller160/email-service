@@ -29,7 +29,7 @@ spring:
             enable: true
 
 keycloak:
-  auth-server-url: https://auth-craigmiller160.ddns.net
+  auth-server-url: https://auth.craigmiller160.us
   ssl-required: all
   resource: email-service
   use-resource-role-mappings: true
