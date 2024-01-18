@@ -43,9 +43,9 @@
         <keycloak.version>20.0.2</keycloak.version>
         <api.test.processor.version>1.2.3</api.test.processor.version>
         <web.utils.version>1.1.4</web.utils.version>
-        <java.version>17</java.version>
+        <java.version>21</java.version>
         <vavr.version>0.10.4</vavr.version>
-        <spotless.version>2.26.0</spotless.version>
+        <spotless.version>2.42.0</spotless.version>
         <maven.git.hooks.version>1.0.1</maven.git.hooks.version>
         <git.hooks.plugin.version>3.3.0</git.hooks.plugin.version>
     </properties>
